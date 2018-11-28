@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{c4fd0733-21ff-4eef-a0fd-7023f81aa0c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pg">
+      <UniqueIdentifier>{0894fa88-11e9-426e-9259-730808680bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="github">
+      <UniqueIdentifier>{052f4eec-3e9d-4568-8121-fb113a617be8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gsoap">
+      <UniqueIdentifier>{faa7d931-53f4-4d59-8b97-34a2ba1d5390}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sql">
+      <UniqueIdentifier>{2613dd84-3b28-425a-ae15-d170a82f22d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{22753d3f-4690-471b-829e-b2874ebb094d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\se_errno.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\se_std.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\se_typedef.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="pg\base64.h">
+      <Filter>pg</Filter>
+    </ClInclude>
+    <ClInclude Include="pg\instr_time.h">
+      <Filter>pg</Filter>
+    </ClInclude>
+    <ClInclude Include="pg\pg_bswap.h">
+      <Filter>pg</Filter>
+    </ClInclude>
+    <ClInclude Include="pg\stringbuilder.h">
+      <Filter>pg</Filter>
+    </ClInclude>
+    <ClInclude Include="github\aes.h">
+      <Filter>github</Filter>
+    </ClInclude>
+    <ClInclude Include="github\argparse.h">
+      <Filter>github</Filter>
+    </ClInclude>
+    <ClInclude Include="core\se_conf.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\se_service.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="gsoap\json.h">
+      <Filter>gsoap</Filter>
+    </ClInclude>
+    <ClInclude Include="gsoap\soapH.h">
+      <Filter>gsoap</Filter>
+    </ClInclude>
+    <ClInclude Include="gsoap\soapStub.h">
+      <Filter>gsoap</Filter>
+    </ClInclude>
+    <ClInclude Include="gsoap\stdsoap2.h">
+      <Filter>gsoap</Filter>
+    </ClInclude>
+    <ClInclude Include="gsoap\xml-rpc.h">
+      <Filter>gsoap</Filter>
+    </ClInclude>
+    <ClInclude Include="gsoap\xml-rpc-iters.h">
+      <Filter>gsoap</Filter>
+    </ClInclude>
+    <ClInclude Include="core\se_utils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="se_handler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="se_method.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="core\se_numeric.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="se_users.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="github\jwt.h">
+      <Filter>github</Filter>
+    </ClInclude>
+    <ClInclude Include="github\jwt-private.h">
+      <Filter>github</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="core\se_std.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="pg\base64.c">
+      <Filter>pg</Filter>
+    </ClCompile>
+    <ClCompile Include="pg\erand48.c">
+      <Filter>pg</Filter>
+    </ClCompile>
+    <ClCompile Include="pg\stringbuilder.c">
+      <Filter>pg</Filter>
+    </ClCompile>
+    <ClCompile Include="github\aes.c">
+      <Filter>github</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="github\argparse.c">
+      <Filter>github</Filter>
+    </ClCompile>
+    <ClCompile Include="core\se_conf.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\se_service.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="gsoap\json.c">
+      <Filter>gsoap</Filter>
+    </ClCompile>
+    <ClCompile Include="gsoap\soapC.c">
+      <Filter>gsoap</Filter>
+    </ClCompile>
+    <ClCompile Include="gsoap\stdsoap2.c">
+      <Filter>gsoap</Filter>
+    </ClCompile>
+    <ClCompile Include="gsoap\xml-rpc.c">
+      <Filter>gsoap</Filter>
+    </ClCompile>
+    <ClCompile Include="core\se_utils.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="se_handler.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="core\se_crc.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\se_pqbin.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\se_numeric.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\se_params.c">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="se_users.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="github\jwt.c">
+      <Filter>github</Filter>
+    </ClCompile>
+    <ClCompile Include="github\jwt-openssl.c">
+      <Filter>github</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="conf.json" />
+    <None Include="gsoap\Clear.bat">
+      <Filter>gsoap</Filter>
+    </None>
+    <None Include="gsoap\Server.bat">
+      <Filter>gsoap</Filter>
+    </None>
+    <None Include="gsoap\soap.nsmap">
+      <Filter>gsoap</Filter>
+    </None>
+    <None Include="sql\test.sql">
+      <Filter>sql</Filter>
+    </None>
+    <None Include="doc\conf.md">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="doc\response.md">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="doc\function.md">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="doc\memory.md">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="doc\request.md">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="sql\prizes.sql">
+      <Filter>sql</Filter>
+    </None>
+  </ItemGroup>
+</Project>

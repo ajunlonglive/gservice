@@ -1,0 +1,28 @@
+{
+  "name": "gsoap server",
+  "port": 7654,
+  "token_keep": 30,
+  "pool": 32,
+  "queue_max": 2048,
+  "backlog": 256,
+  "send_timeout": 3,
+  "recv_timeout": 6,
+  "double_format": "%.6lf",
+  "redirect_url": "/login.html",
+  "database_max_use_count": 0,  
+  "databases": [
+    {
+      "server": "192.168.1.252",
+      "port": 5432,
+      "dbname": "expe",
+      "user": "expe",
+      "password": "XEqoF6XMBeO4UKKINpf1VA==",
+      "client_encoding": "UTF8",
+      "connect_timeout": 10,
+      "statement_timeout": 10,
+      "max_connection": 32,
+      "weight": 1,
+      "iswriter": true
+    }
+  ]
+}

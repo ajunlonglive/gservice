@@ -1,0 +1,50 @@
+{
+  "name": "gsoap server",
+  "port": 7654,
+  "pool": 48,
+  "send_timeout": 3,
+  "recv_timeout": 6,
+  "double_format": "%.6lf",
+  "database_max_use_count": 256,
+  "databases": [
+    {
+      "server": "192.168.1.252",
+      "port": 5432,
+      "dbname": "expe",
+      "user": "expe",
+      "password": "/0YVARorrHWADtCV0/PClQ==",
+      "client_encoding": "UTF8",
+      "connect_timeout": 10,
+      "statement_timeout": 10,
+      "max_connection": 16,
+      "weight": 1,
+      "iswriter": true
+    },
+    {
+      "server": "192.168.1.252",
+      "port": 5432,
+      "dbname": "expe",
+      "user": "expe",
+      "password": "/0YVARorrHWADtCV0/PClQ==",
+      "client_encoding": "UTF8",
+      "connect_timeout": 10,
+      "statement_timeout": 10,
+      "max_connection": 16,
+      "weight": 1,
+      "iswriter": false
+    },
+     {
+      "server": "192.168.1.252",
+      "port": 5432,
+      "dbname": "expe",
+      "user": "expe",
+      "password": "/0YVARorrHWADtCV0/PClQ==",
+      "client_encoding": "UTF8",
+      "connect_timeout": 10,
+      "statement_timeout": 10,
+      "max_connection": 16,
+      "weight": 1,
+      "iswriter": false
+    }
+  ]
+}
