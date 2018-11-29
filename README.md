@@ -27,7 +27,9 @@ sudo apt-get install libjansson-dev
 sudo apt-get install libssl-dev
 sudo apt-get install  libpq-dev
 
-#编译.注意可能要修改makefile文件的libpq头文件和库文件路径
+#编译
+#默认编译为debug版本
+#注意要修改makefile文件的libpq头文件和库文件路径
 make
 
 #运行
@@ -38,7 +40,7 @@ make
 - gsoap 2.8.71 在目录gsoap中
 - aec 在目录github中,加密解密PostgreSQL密码
 - argparse 在目录github中,main.c命令行选项
-- libjwt 在目录github中,生成或解析token,局部修改.
+- libjwt 在目录github中,生成或解析token.请注意libjwt做了局部修改.
 
 ## 其它
 [配置文件说明](doc/conf.md)<br/>
