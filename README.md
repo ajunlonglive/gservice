@@ -23,8 +23,8 @@ email:81855841@qq.com<br/>
 
 **linux**
 ```bash
-sudo apt-get install libjansson-dev;
-sudo apt-get install libssl-dev;
+sudo apt-get install libjansson-dev
+sudo apt-get install libssl-dev
 sudo apt-get install  libpq-dev
 
 #编译.注意可能要修改makefile文件的libpq头文件和库文件路径
