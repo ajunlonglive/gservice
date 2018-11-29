@@ -56,7 +56,7 @@ make
 　　　|-doc                          文档目录<br/>
 　　　|-github                       本项目中使用来自github中的库<br/>
 　　　|-gsoap                        gsoap生成的库,不要修改(gsoap 2.8.71)<br/>
-　　　|-gsoap                        摘自PostgreSQL11中源码,本项目使用的库,不要修改<br/>
+　　　|-pg                        		摘自PostgreSQL11中源码,本项目使用的库,不要修改<br/>
 　　　|-sql                          测试方法中使用的PostgreSQL SQL表和函数<br/>
 　　　|-conf.json                    配置文件<br/>
 　　　|-main.c                       应用程序入口函数,运行后windows按esc退出,linux按ctrl+c退出.<br/>
