@@ -6,6 +6,7 @@
 
 ## 技术支持,提交BUG,志愿者
 QQ群:578240280
+email:81855841@qq.com
 
 ## 服务示例图
 ![image](image/process.jpg)
@@ -25,6 +26,12 @@ QQ群:578240280
 sudo apt-get install libjansson-dev;
 sudo apt-get install libssl-dev;
 sudo apt-get install  libpq-dev
+
+#编译.注意可能要修改makefile文件的libpq头文件和库文件路径
+make
+
+#运行
+./gservice
 ```
 
 ## 集成至项目的库
