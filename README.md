@@ -1,12 +1,12 @@
-# gosap PostgreSQL libpq高性能JSON服务器
+# gsoap PostgreSQL libpq高性能JSON服务器
 [中文版](/README.md)<br/>
 [英文版](/README_EN.md)<br/>
 
 本项目已在Windows 10和Ubuntu 18.04中测试通过.
 
 ## 技术支持,提交BUG,志愿者
-QQ群:578240280
-email:81855841@qq.com
+QQ群:578240280<br/>
+email:81855841@qq.com<br/>
 
 ## 服务示例图
 ![image](image/process.jpg)
@@ -123,7 +123,7 @@ void user_login(struct SE_WORKINFO *arg) {
 	current_tm = time(NULL);
 	SE_throw(SE_make_token(arg, userid, current_tm, NULL));
   //清理资源
-  SE_PQclear(result);
+	SE_PQclear(result);
 	//提交事务
 	SE_throw(SEPQ_commit(arg));
 	return;
