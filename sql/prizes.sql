@@ -62,6 +62,39 @@ as $$
 	end;
 $$ language plpgsql strict;
 
+/****************************************************************************************
+	将第x个bit位设置为1,ibit的值范围0-31
+00000000000000000000000000000000
+****************************************************************************************/
+create or replace function SE_flag_add(iflag integer, ibit integer) 
+    returns integer 
+as $$
+	select iflag + (1<<ibit);
+$$ language sql strict; 
+/****************************************************************************************
+	将第x个bit位设置为0,ibit的值范围0-31
+00000000000000000000000000000000
+****************************************************************************************/
+create or replace function SE_flag_remove(iflag integer, ibit integer) 
+    returns integer 
+as $$
+	select iflag - (1<<ibit);
+$$ language sql strict;
+/****************************************************************************************
+	凑数第x个bit位是否为1,ibit的值范围0-31
+00000000000000000000000000000000
+****************************************************************************************/
+create or replace function SE_flag_bitisone(iflag integer, ibit integer) 
+    returns boolean 
+as $$
+	select  (case ((iflag >> ibit) & 1) when 1 then
+		true
+	else
+		false
+	end);
+$$ language sql strict; 
+
+
 
 create or replace function grab_prizes_lock(integer,bigint)
 	returns bigint
@@ -76,24 +109,27 @@ as $$
 
 		v_money bigint;--剩余的钱
 		v_num integer; --剩余红包数量
+
+		v_flag integer;	--锁标志
 	begin
-		perform pg_advisory_lock($1::bigint);
+		v_flag := 0;
+		select  pg_advisory_lock($1::bigint),SE_flag_add(v_flag,0);
 		--获取配置信息
 		v_current := now();
 		select price,num,start,done into v_allmoney,v_allnum,v_start,v_done from prizes_conf where objectid=$1;
 
 		if( v_allmoney is null or v_allnum is null or  v_start is null or  v_done is null) then
-			perform pg_advisory_unlock($1::bigint);
+			select pg_advisory_unlock($1::bigint),SE_flag_remove(v_flag,0);
 			raise exception '本期抢红包信息未配置!';
 		end if;
 
 		if(v_current < v_start) then
-			perform pg_advisory_unlock($1::bigint);
+			select pg_advisory_unlock($1::bigint),SE_flag_remove(v_flag,0);
 			raise exception '本期抢红包还有"%s"开始!',format_interval(v_start -v_current);
 		end if;
 
 		if( v_current > v_done ) then
-			perform pg_advisory_unlock($1::bigint);
+			select pg_advisory_unlock($1::bigint),SE_flag_remove(v_flag,0);
 			raise exception '本期抢红包已经结束!';
 		end if;
 
@@ -112,10 +148,22 @@ as $$
 		--保存抢红包信息
 		insert into prizes(confid,userid,price) values($1,$2,v_money);
 		if( v_money > 0 ) then
+			select pg_advisory_lock($2),SE_flag_remove(v_flag,1);
 			--更新用户钱包的中金额
+
+			select pg_advisory_unlock($2),SE_flag_remove(v_flag,1);
 		end if;
-		perform pg_advisory_unlock($1::bigint);
+		select pg_advisory_unlock($1::bigint),SE_flag_remove(v_flag,0);
 		return v_money;
+		exception
+			when others then
+				if(SE_flag_bitisone(v_flag,0) ) then
+					perform pg_advisory_unlock($1::bigint);
+				end if;
+				if(SE_flag_bitisone(v_flag,1) ) then
+					perform pg_advisory_unlock($2);
+				end if;
+				raise exception '%', sqlerrm;				
 	end;
 $$ language plpgsql strict;
 
