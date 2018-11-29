@@ -33,7 +33,7 @@ sudo apt-get install  libpq-dev
 make
 
 #运行
-./gservice
+./gservice -c 1
 ```
 
 ## 集成至项目的库
