@@ -14,7 +14,7 @@ static void SE_dbconfs_free(struct SE_DBCONF ***ptr, int32_t count);
 static void SE_tsoap_free(int32_t pool, struct soap ***ptr);
 static void SE_workthred_free(struct SE_SHARED *shared, int32_t pool, pthread_t ***ptr);
 static void SE_soap_print_fault(struct soap *soap);
-static int32_t enqueue(SOAP_SOCKET sock, struct SE_SHARED *shared);
+static int32_t enqueue(SOAP_SOCKET sock, struct SE_SHARED *shared, bool *isrun);
 static SOAP_SOCKET dequeue(struct SE_SHARED *shared, bool *isrun);
 static void *process_queue(void *soap);
 static bool SE_pgcluster_make(const char * const name, const struct SE_DBCONF *const*dbconfs, int32_t count, struct SE_PGCLUSTER **ptr);
@@ -162,7 +162,7 @@ static void SE_soap_print_fault(struct soap *soap) {
 /*
 *	入队.如果队列已满的话需要等待片刻后再试
 */
-static int32_t enqueue(SOAP_SOCKET sock, struct SE_SHARED *shared) {
+static int32_t enqueue(SOAP_SOCKET sock, struct SE_SHARED *shared, bool *isrun) {
 	int32_t status = SOAP_OK;
 	int32_t next;
 
@@ -177,6 +177,7 @@ static int32_t enqueue(SOAP_SOCKET sock, struct SE_SHARED *shared) {
 		shared->queue->tail = next;
 		pthread_cond_signal(shared->locks->cond);
 	}
+	*isrun = shared->isrun;
 	pthread_mutex_unlock(shared->locks->mutex);
 	return status;
 }
@@ -568,12 +569,8 @@ static void *SE_isten(void *process) {
 			}
 		}
 		//将新连接的socket添加到队列
-		while (enqueue(s, shared) == SOAP_EOM)
+		while (enqueue(s, shared, &isrun) == SOAP_EOM && isrun)
 			SE_usleep(SLEEP_MILLISEC(1));
-
-		pthread_mutex_lock(shared->locks->mutex);
-		isrun = shared->isrun;
-		pthread_mutex_unlock(shared->locks->mutex);
 	}
 	//停止服务,等待工作线程完成
 	SE_workthred_free(shared, pool, &works);
