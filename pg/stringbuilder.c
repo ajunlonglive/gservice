@@ -189,18 +189,15 @@ void SEAPI appendBinaryStringBuilderJsonStr(StringBuilder str, const char *bin_d
 	int32_t index = 0;
 	if (NULL == str || NULL == bin_data || 0 == bin_memlen)
 		return;
-
-	enlargeStringBuilder(str, bin_memlen);
+	//一个"要变成\",多了一个字符,所以*2
+	enlargeStringBuilder(str, bin_memlen * 2);
 
 	while (index < bin_memlen) {
 		if ('"' == bin_data[index]) {
-			str->data[str->len] = '\\';
-			str->len++;
-			str->data[str->len] = '"';
-			str->len++;
+			str->data[str->len++] = '\\';
+			str->data[str->len++] = '"';			
 		} else {
-			str->data[str->len] = bin_data[index];
-			str->len++;
+			str->data[str->len++] = bin_data[index];
 		}
 		++index;
 	}
