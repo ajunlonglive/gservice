@@ -18,7 +18,7 @@
 #	Í¬Ê±ÐÞ¸ÄSRCS = $(shell find ./ -name "*.cpp")
 
 CC = cc
-CFLAGS = -Wall -g -O
+CFLAGS = -Wall -O
 LINKFLAGS =
 INCLUDE = -I/usr/local/pgsql/include
 LIBS = -lpthread /usr/local/pgsql/lib/libpq.a /usr/lib/x86_64-linux-gnu/libjansson.a /usr/lib/x86_64-linux-gnu/libcrypto.a /usr/lib/x86_64-linux-gnu/libssl.a  -ldl

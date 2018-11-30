@@ -28,7 +28,7 @@ sudo apt-get install libssl-dev
 sudo apt-get install  libpq-dev
 
 #编译
-#默认编译为debug版本
+#默认编译为Release版本
 #注意要修改makefile文件的libpq头文件和库文件路径
 make
 
