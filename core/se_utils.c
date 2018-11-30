@@ -235,7 +235,7 @@ bool SEAPI SE_make_token(struct SE_WORKINFO *arg, int64_t userid, time_t current
 	appendStringBuilder(arg->buf, "%I64d", userid);
 #else
 #	ifdef __x86_64__
-	appendStringBuilder(arg->buf, "%ldd", userid);
+	appendStringBuilder(arg->buf, "%ld", userid);
 #	elif __i386__
 	appendStringBuilder(arg->buf, "%lld", userid);
 #	endif
@@ -248,7 +248,7 @@ bool SEAPI SE_make_token(struct SE_WORKINFO *arg, int64_t userid, time_t current
 	appendStringBuilder(arg->buf, "%I64d", current_tm + conf->token_keep * 60);
 #else
 #	ifdef __x86_64__
-	appendStringBuilder(arg->buf, "%ldd", current_tm + conf->token_keep * 60);
+	appendStringBuilder(arg->buf, "%ld", current_tm + conf->token_keep * 60);
 #	elif __i386__
 	appendStringBuilder(arg->buf, "%lld", current_tm + conf->token_keep * 60);
 #	endif
@@ -260,7 +260,7 @@ bool SEAPI SE_make_token(struct SE_WORKINFO *arg, int64_t userid, time_t current
 		appendStringBuilder(arg->buf, "%I64d", current_tm + 3600 * 8);
 #else
 #	ifdef __x86_64__
-		appendStringBuilder(arg->buf, "%ldd", current_tm + 3600 * 8);
+		appendStringBuilder(arg->buf, "%ld", current_tm + 3600 * 8);
 #	elif __i386__
 		appendStringBuilder(arg->buf, "%lld", current_tm + 3600 * 8);
 #	endif

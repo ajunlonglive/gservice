@@ -5,7 +5,7 @@ drop table if exists test_001;
 drop table if exists test_002;
 drop table if exists test_003;
 drop table if exists test_users;
-drop function if exists users_login(varchar(16),varchar(64));
+drop function if exists test_users_login(varchar(16),varchar(64));
 /****************************************************************************************
 	创建测试表
 ****************************************************************************************/
@@ -51,20 +51,31 @@ create table test_003(
 	f2 jsonb
 )
 
---用户表
+/****************************************************************************************
+	用户表
+	为了方便测试,用户名由6-16位数字组成,并且是唯一的
+	密码固定为cd7ae1509a301365de872ea79d73d99e
+	昵称或姓名由2-8位数字组成
+	创建日期2018-01-01至2018-12-31 23:59:59.999999随机分布
+drop table if exists test_users;
+****************************************************************************************/
 create table test_users(
 	objectid bigserial not null,									--唯一编号
 	uname varchar(16) not null,								--用户名,唯一,不能修改
 	pwd varchar(64) not null,									--密码
-	name varchar(16) not null,								--昵称或姓名
+	name varchar(8) not null,									--昵称或姓名
 	generate timestamptz default now() not null,	--创建日期
-	--用户名只能是字母和数字组合
+	--实际使用中用户名只能是字母和数字组合
 	--constraint ck_test_users_uname check(uname~'^[0-9a-zA-Z_]{4,16}$' and uname !~ '^[0-9]+$' ),
-	constraint pk_test_users_objectid primary key(objectid) with (fillfactor=80)
-)with (fillfactor=80);
+	constraint pk_test_users_objectid primary key(objectid) with (fillfactor=100)
+)with (fillfactor=100);
+create unique index uidx_test_users_uname on users(uname)  with (fillfactor=100) tablespace idxexpe;
+
 
 
 /****************************************************************************************
+	用户登录函数
+	实际应用应加上限制,同一ip同一用户名3秒登录一次,防止暴力破解
 ****************************************************************************************/
 create or replace function test_users_login(
 	iidentity varchar(16),ipwd varchar(64)

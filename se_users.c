@@ -65,11 +65,11 @@ extern void grab_prizes(struct SE_WORKINFO *arg) {
 	SE_throw(SE_parse_token(arg, token, &userid, &expired, &last));
 	//获取一个只读的数据库连接,如果没配置只读数据库则使用读写数据库
 	SE_send_conn_null((pg = get_dbserver(arg, false)), arg);
-	//开始一个只读事务
-	SE_throw(SEPQ_begin(arg, SERIALIZABLE_READ_WRITE));
+	//开始一个读写事务,已经在函数grab_prizes_lock中实现锁了,因此用READ_COMMITTED即可
+	SE_throw(SEPQ_begin(arg, READ_COMMITTED_READ_WRITE));
 
 	resetStringBuilder(arg->sql);
-	appendStringBuilder(arg->sql, "select * from grab_prizes_lock($1,$2)");
+	appendStringBuilder(arg->sql, "select grab_prizes_lock($1,$2)");
 
 	SE_throw(SEPQ_params_create(arg, 2, &params));
 	SE_throw(SEPQ_params_add_int32(arg, params, 0, (int32_t)(*prizes)));

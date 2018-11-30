@@ -105,7 +105,7 @@ static void hello_world(struct SE_WORKINFO *arg) {
 	appendStringBuilder(arg->sys, "\"msg\":\"%s hello world age(%I64d)!\"", name, *age);
 #else
 #	ifdef __x86_64__
-	appendStringBuilder(arg->sys, "\"msg\":\"%s hello world age(%ldd)!\",", name, *age);
+	appendStringBuilder(arg->sys, "\"msg\":\"%s hello world age(%ld)!\",", name, *age);
 #	elif __i386__
 	appendStringBuilder(arg->sys, "\"msg\":\"%s hello world age(%lld)!\",", name, *age);
 #	endif

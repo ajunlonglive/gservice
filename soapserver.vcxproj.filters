@@ -207,5 +207,8 @@
     <None Include="sql\prizes.sql">
       <Filter>sql</Filter>
     </None>
+    <None Include="sql\tmp.sql">
+      <Filter>sql</Filter>
+    </None>
   </ItemGroup>
 </Project>

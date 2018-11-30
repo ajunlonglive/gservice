@@ -196,7 +196,7 @@ static void SEPQ_parse_one_array_elem(struct SE_WORKINFO *arg, int32_t array_siz
 				appendStringBuilder(arg->sys, "%I64d", tmp64_val);
 #else
 #	ifdef __x86_64__
-				appendStringBuilder(arg->sys, "%ldd", tmp64_val);
+				appendStringBuilder(arg->sys, "%ld", tmp64_val);
 #	elif __i386__
 				appendStringBuilder(arg->sys, "%lld", tmp64_val);
 #	endif
@@ -347,7 +347,7 @@ static bool SE_reader(struct SE_WORKINFO *arg, const PGresult *result) {
 					appendStringBuilder(arg->sys, "%I64d", tmp64_val);
 #else
 #	ifdef __x86_64__
-					appendStringBuilder(arg->sys, "%ldd", tmp64_val);
+					appendStringBuilder(arg->sys, "%ld", tmp64_val);
 #	elif __i386__
 					appendStringBuilder(arg->sys, "%lld", tmp64_val);
 #	endif
