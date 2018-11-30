@@ -104,7 +104,7 @@ cat /proc/21644/status
 top -p 21644
 ```
 **Windows**<br />
-后来补截的图,只有一个客户端请求 16 * 10000
+后来补截的图,只有一个客户端请求 16 * 10000<br />
 ![image](../image/windows_vs.png)<br /><br />
 **Linux**<br />
 ![image](../image/32个进程32连接.png)
