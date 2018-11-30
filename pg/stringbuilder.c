@@ -146,8 +146,7 @@ void SEAPI appendStringBuilderString(StringBuilder str, const char *s) {
 void SEAPI appendStringBuilderChar(StringBuilder str, char ch) {
 	if (str->len + 1 >= str->maxlen)
 		enlargeStringBuilder(str, 1);
-	str->data[str->len] = ch;
-	str->len++;
+	str->data[str->len++] = ch;
 	str->data[str->len] = '\0';
 }
 
@@ -155,8 +154,7 @@ void SEAPI appendStringBuilderChar(StringBuilder str, char ch) {
 void SEAPI appendStringBuilderCharNT(StringBuilder str, char ch) {
 	if (str->len + 1 >= str->maxlen)
 		enlargeStringBuilder(str, 1);
-	str->data[str->len] = ch;
-	str->len++;
+	str->data[str->len++] = ch;
 }
 
 void SEAPI appendStringBuilderSpaces(StringBuilder str, int32_t count) {
