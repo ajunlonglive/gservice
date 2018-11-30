@@ -24,7 +24,7 @@ void user_login(struct SE_WORKINFO *arg) {
 	SE_throw(SEPQ_begin(arg, READ_COMMITTED_READ_ONLY));
 
 	resetStringBuilder(arg->sql);
-	appendStringBuilder(arg->sql, "select * from test_users_login($1,$2)");
+	appendStringBuilder(arg->sql, "select test_users_login($1,$2)");
 
 	SE_throw(SEPQ_params_create(arg, 2, &params));
 	SE_throw(SEPQ_params_add_varchar(arg, params, 0, username));
