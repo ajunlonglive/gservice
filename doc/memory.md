@@ -58,18 +58,17 @@ void soap_free(struct soap *soap)
 	if(!SE_PTR_ISNULL(soap_)){\
 		soap_destroy(soap_);\
 		soap_end(soap_);\
-		soap_done(soap_);\
 	}\
 } while (0);
 //完全释放soap
-#define SE_SAFE_SOAP(soap)\
+#define SE_soap_free(soap_)\
  do {\
-	if(NULL !=soap) { \
-		soap_destroy(soap);\
-		soap_end(soap);\
-		soap_done(soap);\
-		soap_free(soap);\
-		soap= NULL; \
+	if(NULL !=soap_) { \
+		soap_destroy(soap_);\
+		soap_end(soap_);\
+		soap_done(soap_);\
+		soap_free(soap_);\
+		soap_= NULL; \
 	} \
 } while (0)
 
@@ -94,5 +93,5 @@ ptr = soap_malloc(ctx, 100);
 //如果你的ctx需要复用,调用
 SE_soap_clear(ctx)
 //否则调用
-SE_SAFE_SOAP(ctx);
+SE_soap_free(ctx);
 ```
