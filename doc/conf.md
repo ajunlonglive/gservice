@@ -50,7 +50,7 @@ databases节点是数组,至少需要包含一台可读写的PostgreSQL.同时�
 - password:PostgreSQL服务器用户密码.密码采用AES 128位加密,可使用工具aescrypt计算密码值.<br />
 - client_encoding:PostgreSQL客户端使用的字符编码类型.<br />
 - connect_timeout:PostgreSQL服务器连接超时时间,单位为秒,范围为1-180.<br />
-- statement_timeout:PostgreSQL服务器执行命令允许的最大时间,单位为毫秒,范围为1-180.如果执行命令的时间超过这个值,将会取消命令执行并发送异常信息.<br />
+- statement_timeout:PostgreSQL服务器执行命令允许的最大时间,单位为秒,范围为1-180.如果执行命令的时间超过这个值,将会取消命令执行并发送异常信息.<br />
 - max_connection:PostgreSQL连接数.范围1-1024.值应为PostgreSQL服务器CPU内核数的2,4,6,8倍,建议使用CPU内核数*2,.注意这个值和gsaop处理请求的线程数量无关.<br />
 - weight:当前PostgreSQL服务器使用频率系数,只有在多台只读PostgreSQL服务器时才会生效,默认设置为1.例如需要某台PostgreSQL服务器具有较高的使用频率时,可将其它只读PostgreSQL服务器设置为1,具有较高的使用频率PostgreSQL服务器设置为2或更高的值,当调用get_next_dbserver(arg, false)获取连接时,连接到具有较高的使用频率PostgreSQL服务器将是其它PostgreSQL服务器的2倍或更高.
 - iswriter:指定当前PostgreSQL服务器是否可读写,true为可读写,false为只读.<br />
